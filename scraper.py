@@ -7,7 +7,7 @@ def crawl(latitude):
     base_url = "https://www.gourmetsociety.co.uk/ajax/markers.php?"
     url = base_url + "restaurant="
 #   url += "&location=Edinburgh"
-    url += "&lat=" + latitude
+    url += "&lat=" + str(latitude)
     url += "&lng=-5"
     url += "&radius=100"
     url += "&friday=false"
