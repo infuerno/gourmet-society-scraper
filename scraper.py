@@ -44,8 +44,9 @@ def crawl(latitude):
           'web' : base64.b64decode(marker.xpath('@web')[0])
         }
         # Saving data:
-        unique_keys = [ 'id' ]
+        print restaurant
         scraperwiki.sqlite.save(unique_keys=['id'], data=restaurant)
+        print "Saved"
         # scraperwiki.sql.save(unique_keys, restaurant)
 
 
@@ -54,4 +55,5 @@ def crawl(latitude):
 #SW 49.162090, -13.413930
 
 for latitude in range(50,60):
+    print "Crawling for latitude " + str(latitude) 
     crawl(latitude)
