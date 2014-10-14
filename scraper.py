@@ -3,13 +3,13 @@ import scraperwiki
 import requests
 from lxml import etree
 
-def crawl():
+def crawl(latitude):
     base_url = "https://www.gourmetsociety.co.uk/ajax/markers.php?"
     url = base_url + "restaurant="
 #   url += "&location=Edinburgh"
-    url += "&lat=52.50"
-    url += "&lng=-0.2"
-    url += "&radius=1000"
+    url += "&lat=" + latitude
+    url += "&lng=-5"
+    url += "&radius=100"
     url += "&friday=false"
     url += "&saturday=false"
     url += "&sunday=false"
@@ -48,4 +48,10 @@ def crawl():
         scraperwiki.sqlite.save(unique_keys=['id'], data=restaurant)
         # scraperwiki.sql.save(unique_keys, restaurant)
 
-crawl()
+
+#UK Bounding Box:
+#NE 60.854691, 1.768960
+#SW 49.162090, -13.413930
+
+for latitude in range(50,60):
+    crawl(latitude)
